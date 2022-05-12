@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: black;
+        transition: all 0.5s ease-in-out;
+        margin-bottom: 30px;
+      }
+      .red {
+        background-color: #ff7675;
+      }
+      .blue {
+        background-color: #74b9ff;
+      }
+      .green {
+        background-color: #55efc4;
+      }
+      .random {
+        background-color: #a29bfe;
+      }
+      .btn {
+        border: none;
+        width: 100px;
+        height: 30px;
+        border-radius: 20px;
+        color: white;
+        font-weight: 700;
+      }
+    </style>
+    <title></title>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="btnCont">
+      <button type="button" class="btn red">Red</button>
+      <button type="button" class="btn blue">Blue</button>
+      <button type="button" class="btn green">Green</button>
+      <button type="button" class="btn random">Random</button>
+    </div>
+    <script>
+      const box = document.querySelector(".box");
+      const redBtn = document.querySelector(".red");
+      const blueBtn = document.querySelector(".blue");
+      const greenBtn = document.querySelector(".green");
+      const randomBtn = document.querySelector(".random");
+
+      // const redClickHandler = () => {
+      //   box.classList.remove("blue", "green");
+      //   box.classList.add("red");
+      // };
+      // const blueClickHandler = () => {
+      //   box.classList.remove("green", "red");
+      //   box.classList.add("blue");
+      // };
+      // const greenClickHandler = () => {
+      //   box.classList.remove("red", "blue");
+      //   box.classList.add("green");
+      // };
+
+      // redBtn.addEventListener("click", redClickHandler);
+      // blueBtn.addEventListener("click", blueClickHandler);
+      // greenBtn.addEventListener("click", greenClickHandler);
+      // randomBtn.addEventListener("click", randomClickHandler);
+
+      const btnArr = [redBtn, blueBtn, greenBtn, randomBtn];
+
+      btnArr.forEach((item) => {
+        item.addEventListener("click", () => {
+          const classList = ["red", "blue", "green", "random", ""];
+          let className =
+            classList[Math.floor(Math.random() * classList.length)];
+          box.classList.remove("red", "blue", "green", "random");
+          if (item.classList.contains("red")) {
+            box.classList.add("red");
+          } else if (item.classList.contains("blue")) {
+            box.classList.add("blue");
+          } else if (item.classList.contains("green")) {
+            box.classList.add("green");
+          } else {
+            box.classList.add(`${className}`);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
