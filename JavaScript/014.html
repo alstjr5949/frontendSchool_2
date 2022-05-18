@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>투두리스트</title>
+  </head>
+  <body>
+    <script>
+      class ToDo {
+        constructor(todo) {
+          this.id = Date.now();
+          this.todo = todo;
+          this.finished = false;
+        }
+        changeState() {
+          this.finished = !this.finished;
+        }
+      }
+
+      class ToDoManager {
+        constructor() {
+          this.todos = [];
+        }
+        addItem(todo) {
+          const todoList = new ToDo(todo);
+          this.todos.push(todoList);
+        }
+        getItems() {
+          return this.todos;
+        }
+        getLeftTodoCount() {
+          return this.todos.filter((todo) => todo.finished === false).length;
+        }
+      }
+
+      const todos = new ToDoManager();
+    </script>
+  </body>
+</html>
